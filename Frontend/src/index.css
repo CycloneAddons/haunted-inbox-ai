@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --font-horror: 'Creepster', cursive;
+  --font-primary: Arial, Helvetica, sans-serif;
+
+  --color-first: #e8590c;
+  --color-first-alt: #d9480f;
+  --color-first-light: #ff922b;
+  --color-container: #120e0d;
+  --color-container-hover: #1c1514;
+  --color-body: #060505;
+
+  --color-surface-base: rgba(15, 12, 12, 0.94);
+  --color-surface-card: rgba(18, 14, 13, 0.96);
+  --color-surface-card-hover: rgba(28, 21, 20, 0.98);
+  --color-surface-elevated: rgba(36, 26, 24, 0.98);
+  --color-surface-input: rgba(10, 8, 8, 0.96);
+
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-default: rgba(255, 255, 255, 0.14);
+  --color-border-hover: rgba(232, 89, 12, 0.45);
+  --color-border-amber: rgba(232, 89, 12, 0.45);
+  --color-border-blood: rgba(239, 68, 68, 0.45);
+
+  --color-amber-primary: #f59e0b;
+  --color-amber-bright: #fbbf24;
+  --color-amber-dim: rgba(245, 158, 11, 0.16);
+  --color-amber-glow: rgba(245, 158, 11, 0.3);
+
+  --color-emerald-primary: #10b981;
+  --color-emerald-dim: rgba(16, 185, 129, 0.16);
+
+  --color-crimson-primary: #ef4444;
+  --color-crimson-dim: rgba(239, 68, 68, 0.18);
+}
+
+:root {
+  --bg-app: #060505;
+  --body-color: #060505;
+  --container-color: #120e0d;
+  --first-color: #e8590c;
+  --first-color-alt: #d9480f;
+  --first-color-light: #ff922b;
+  --white-color: #ffffff;
+
+  --surface-base: rgba(15, 12, 12, 0.94);
+  --surface-card: rgba(18, 14, 13, 0.96);
+  --surface-card-hover: rgba(28, 21, 20, 0.98);
+  --surface-elevated: rgba(36, 26, 24, 0.98);
+  --surface-input: rgba(10, 8, 8, 0.96);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(232, 89, 12, 0.45);
+  --border-amber: rgba(232, 89, 12, 0.45);
+  --border-blood: rgba(239, 68, 68, 0.45);
+
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --text-muted: #6c757d;
+
+  --font-horror: 'Creepster', cursive;
+  --font-primary: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #060505;
+  background-image: radial-gradient(circle at 50% 0%, rgba(232, 89, 12, 0.09), transparent 50%), url('/bg.png');
+  background-position: center top, center center;
+  background-size: 100% 700px, cover;
+  background-attachment: scroll, fixed;
+  background-repeat: no-repeat, no-repeat;
+  color: #f8f9fa;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 5, 5, 0.9);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.horror-title {
+  font-family: 'Creepster', cursive;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  color: #fbbf24;
+  text-shadow: 0 0 16px rgba(232, 89, 12, 0.5);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-modal-in {
+  animation: modalIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-fast {
+  animation: spinSlow 0.8s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 89, 12, 0.4);
+}

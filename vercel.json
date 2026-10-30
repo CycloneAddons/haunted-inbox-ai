@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "functions": {
+    "Backend/index.js": {
+      "includeFiles": "Backend/dist/**",
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/Backend/index.js"
+    }
+  ]
+}
