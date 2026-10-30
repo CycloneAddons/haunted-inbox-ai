@@ -8,40 +8,8 @@
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/index.js"
-    },
-    {
-      "source": "/h/(.*)",
-      "destination": "/index.js"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/dist/assets/$1"
-    },
-    {
-      "source": "/logo.png",
-      "destination": "/dist/logo.png"
-    },
-    {
-      "source": "/long-logo.png",
-      "destination": "/dist/long-logo.png"
-    },
-    {
-      "source": "/bg.png",
-      "destination": "/dist/bg.png"
-    },
-    {
-      "source": "/favicon.svg",
-      "destination": "/dist/favicon.svg"
-    },
-    {
-      "source": "/icons.svg",
-      "destination": "/dist/icons.svg"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/dist/index.html"
+      "destination": "/index.js"
     }
   ]
 }
