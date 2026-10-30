@@ -35,7 +35,12 @@ const PORT = 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const distPath = path.join(__dirname, 'dist');
+const candidateDistPaths = [
+  path.join(__dirname, 'dist'),
+  path.join(process.cwd(), 'dist'),
+  path.join(process.cwd(), 'Backend', 'dist'),
+];
+const distPath = candidateDistPaths.find((p) => fs.existsSync(p)) || candidateDistPaths[0];
 
 const origins = [
   'http://localhost:5173',
@@ -48,6 +53,16 @@ const origins = [
 const bodyLimit = "256kb"
 
 app.set('trust proxy', 1)
+
+app.use((req, res, next) => {
+  const matched = req.headers['x-matched-path'];
+  if (matched && matched !== '/index.js' && !matched.endsWith('/index.js')) {
+    const queryIdx = req.url.indexOf('?');
+    const query = queryIdx !== -1 ? req.url.slice(queryIdx) : '';
+    req.url = matched + query;
+  }
+  next();
+});
 
 app.use(helmet({
   contentSecurityPolicy: false,
@@ -296,7 +311,7 @@ app.use('/', webhooksRouter);
 app.use(express.static(distPath));
 
 app.get('/{*path}', (req, res, next) => {
-  if (req.path.startsWith('/api') || req.path.startsWith('/h')) {
+  if (req.path.startsWith('/api') || req.path.startsWith('/h') || /\.[a-zA-Z0-9]+$/.test(req.path)) {
     return next();
   }
   const indexPath = path.join(distPath, 'index.html');
